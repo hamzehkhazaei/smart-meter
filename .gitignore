@@ -21,3 +21,7 @@ _builds/
 _projects/
 _steps/
 
+# Eclipse
+.cache-main
+.classpath
+.project
