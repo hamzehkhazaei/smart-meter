@@ -1,3 +1,3 @@
 FROM denvazh/gatling:2.2.2
-ADD 0/scala-library-2.11.8.jar 1/nats-connector-gatling_2.11-0.3.0-SNAPSHOT.jar 2/java-nats-streaming-0.1.2.jar 3/jnats-0.5.3.jar 4/slf4j-api-1.7.21.jar 5/protobuf-java-3.0.0.jar 6/guava-19.0.jar ./lib/
-ADD 7/user-files ./user-files
+ADD 0/scala-library-2.11.8.jar 1/nats-connector-gatling_2.11-0.3.0-SNAPSHOT.jar 2/java-nats-streaming-0.1.2.jar 3/jnats-0.5.3.jar 4/slf4j-api-1.7.21.jar 5/protobuf-java-3.0.0.jar 6/guava-19.0.jar 7/breeze_2.11-0.12.jar 8/breeze-macros_2.11-0.12.jar 9/scala-reflect-2.11.8.jar 10/core-1.1.2.jar 11/arpack_combined_all-0.1.jar 12/opencsv-2.3.jar 13/jtransforms-2.4.0.jar 14/junit-4.8.2.jar 15/commons-math3-3.2.jar 16/spire_2.11-0.7.4.jar 17/spire-macros_2.11-0.7.4.jar 18/shapeless_2.11-2.0.0.jar ./lib/
+ADD 19/user-files ./user-files
