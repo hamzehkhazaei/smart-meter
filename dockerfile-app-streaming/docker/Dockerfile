@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-scala:2.10
+FROM frolvlad/alpine-scala:2.11
 RUN ["mkdir", "-p", "\/usr\/local\/spark\/conf"]
 ENV SPARK_HOME="/usr/local/spark"
 COPY log4j.properties /usr/local/spark/conf
