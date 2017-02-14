@@ -27,17 +27,21 @@ class NatsInjection extends Simulation {
   properties.setProperty(io.nats.client.Constants.PROP_URL, natsUrl)
   println("System properties: " + System.getenv())
   
-  var subject = System.getenv("GATLING_TO_NATS_SUBJECT")
+  val subject = System.getenv("GATLING_TO_NATS_SUBJECT")
   if (subject == null) {
     println("No Subject has been defined through the 'GATLING_TO_NATS_SUBJECT' Environment Variable!!!")
   } else {
     println("Will emit messages to " + subject)
     val natsProtocol = NatsProtocol(properties, subject)
     
-    val natsScn = scenario("NATS call").exec(NatsBuilder(new ConsumerInterpolatedVoltageProvider()))
+    val usersPerSec = System.getenv("GATLING_USERS_PER_SEC").toDouble
+    val duration = System.getenv("GATLING_DURATION").toInt
+    val slot = System.getenv("TASK_SLOT").toInt
+    	    
+    val natsScn = scenario("smartmeter").exec(NatsBuilder(new ConsumerInterpolatedVoltageProvider(slot, usersPerSec)))
    
     setUp(
-      natsScn.inject(constantUsersPerSec(27) during (1 minute))
+      natsScn.inject(constantUsersPerSec(usersPerSec) during (duration minute))
     ).protocols(natsProtocol)
   }
 }
