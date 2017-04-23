@@ -9,8 +9,7 @@ RUN cd /nodetool &&     tar -zxf dsc-cassandra-3.0.9-bin.tar.gz &&    rm dsc-cas
 
 RUN apk --no-cache add docker
 
-VOLUME ["/script"]
-VOLUME ["/conf"]
+VOLUME ["/etc/telegraf/"]
 
 COPY script/ /etc/telegraf/
 RUN chmod +x /etc/telegraf/*.sh
