@@ -1,3 +1,4 @@
+# GENERATED FILE, please do not modify nor store into Git #
 FROM telegraf:1.2.1-alpine
 
 # https://github.com/iron-io/dockers/blob/master/java/java-1.8/Dockerfile

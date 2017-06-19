@@ -1,3 +1,4 @@
+# GENERATED FILE, please do not modify nor store into Git #
 FROM gettyimages/spark:2.1.0-hadoop-2.7
 
 COPY ./libs/docker-smart-meter-app-batch-assembly.jar $SPARK_HOME
