@@ -1,8 +1,8 @@
 # GENERATED FILE, please do not modify nor store into Git #
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/#use-multi-stage-builds
 # https://github.com/Logimethods/docker-eureka
-FROM logimethods/eureka:entrypoint as entrypoint
-#FROM entrypoint_exp as entrypoint
+#FROM logimethods/eureka:entrypoint as entrypoint
+FROM entrypoint_exp as entrypoint
 
 ### MAIN FROM ###
 
@@ -32,8 +32,12 @@ RUN chown cassandra:cassandra /etc/cassandra/jmxremote.password &&     chmod 400
 ### EUREKA ###
 
 COPY --from=entrypoint eureka_utils.sh /eureka_utils.sh
+COPY entrypoint_finalize.sh /entrypoint_finalize.sh
 COPY merged_entrypoint.sh /merged_entrypoint.sh
 RUN chmod +x /merged_entrypoint.sh
 ENTRYPOINT ["/merged_entrypoint.sh"]
 
 ENV READY_WHEN="Created default superuser role"
+
+## !!! Looks like the multi-stage build forgot the CMD !!!
+CMD ["cassandra", "-f"]
